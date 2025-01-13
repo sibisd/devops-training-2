@@ -1,0 +1,49 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"s3:PutEncryptionConfiguration",
+				"s3:PutLifecycleConfiguration",
+				"s3:PutBucketPublicAccessBlock",
+				"s3:PutBucketOwnershipControls",
+				"s3:get*",
+				"s3:list*"
+			],
+			"Resource": "arn:aws:s3:::*"
+		},
+		{
+			"Effect": "Allow",
+			"Action": [
+				"kms:GetKeyPolicy",
+                "kms:EnableKeyRotation",
+				"kms:GetKeyRotationStatus",
+				"kms:ScheduleKeyDeletion",
+				"kms:CreateAlias"
+			],
+			"Resource": ["*"]
+		},
+        {
+			"Effect": "Allow",
+			"Action": [
+				"dynamodb:TagResource",
+                "dynamodb:UpdateContinuousBackups"
+			],
+			"Resource": ["*"]
+		},		
+        
+		{
+			"Sid": "Statement2",
+			"Effect": "Allow",
+			"Action": [
+				"codecommit:CreateRepository",
+                "codecommit:GetRepository",
+                "codecommit:TagResource"
+			],
+			"Resource": [
+				"*"
+			]
+		}
+	]
+}
